@@ -1,4 +1,4 @@
-﻿// JBond.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+// JBond.cpp
 //
 
 #define IN
@@ -12,7 +12,7 @@ template <unsigned int N>
 class JBond
 {
 public:
-	constexpr JBond(IN const char* str) { //шифруем by XOR во время компиляции
+	constexpr JBond(IN const char* str) { //encrypt by XOR during compile time!
 		for (auto& c : local)
 		{
 			c = *str++ ^ HIDE;
@@ -29,7 +29,7 @@ private:
 	char local[N] = { 0 };
 };
 
-// вычисление лямбдой с constexpr во время компиляции
+// lamda with constexpr magic word
 #define STR(str) \
     []() -> char* { \
         constexpr auto sz = sizeof(str)/sizeof(str[0]); \
